@@ -1,0 +1,84 @@
+.window {
+	-fx-background-color: #ede6e4;
+}
+
+.button{
+	-fx-background-color: black;
+	-fx-font-family: "Arial";
+	-fx-font-color: #ffffff;
+	-fx-font-size: 22px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #ffffff;
+	-fx-border-width: 1px;
+	-fx-border-color: #ede6e4;
+    -fx-background-radius: 15;
+    -fx-border-radius: 15;
+	-fx-effect: innershadow(three-pass-box, #efe9e7, 5, 0.5, 1, 1);
+}
+
+//digit
+.digit{
+	-fx-background-color: #1b1b1b;
+}
+.digit:hover{
+	-fx-background-color: #2f2f2f;	
+}
+.digit:pressed{
+	-fx-background-color: #523e3e;	
+}
+
+.digit:disabled{
+	-fx-background-color: #474736;
+}
+
+//clearing
+.clearing{
+	-fx-font-size: 16px;
+	-fx-background-color: #515151;	
+}
+.clearing:hover{
+	-fx-background-color: #6b6b6b;	
+}
+.clearing:pressed{
+	-fx-background-color: #785a5a;	
+}
+
+//equality
+.equality{
+	-fx-background-color: #4f4f4f;	
+}
+.equality:hover{
+	-fx-background-color: #707070;	
+}
+.equality:pressed{
+	-fx-background-color: #816161;	
+}
+
+//operation
+.operation{
+	-fx-font-size: 16px;
+	-fx-background-color: #383838;	
+}
+.operation:hover{
+	-fx-background-color: #696969;	
+}
+.operation:pressed{
+	-fx-background-color: #6a5151;	
+}
+
+.result{
+	-fx-font-family: "Arial";
+	-fx-background-color: #ede6e4;
+	-fx-font-size: 20pt;
+	-fx-font-color: black;
+	-fx-background-radius: 10;
+	-fx-border-radius: 10;
+	-fx-effect: innershadow(three-pass-box, gray, 3, 0.3, 1, 1);
+}
+
+.expression{
+	-fx-font-family: "Arial";
+	-fx-background-color: #efe9e7;
+	-fx-font-size: 10pt;
+	-fx-font-color: black;
+}

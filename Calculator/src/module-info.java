@@ -1,10 +1,3 @@
-/**
- * 
- */
-/**
- * @author HP
- *
- */
 module calculator {
 	exports calculator.git;
 

@@ -7,81 +7,177 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Alert.AlertType;
 
+/**
+ * Reacts on user's actions, shows alerts, creates model and makes it does calculations.
+ * 
+ * @author Magdalena Zych
+ *
+ */
 public class Controller {
+	
+	/**
+	 * A button with "7".    
+	 */
 	@FXML
 	private Button seven;
-
+	
+	/**
+	 * A button with "+".    
+	 */
 	@FXML
 	private Button add;
 
+	/**
+	 * A button with "=".    
+	 */
 	@FXML
 	private Button equals;
 
+	/**
+	 * A button with "-".    
+	 */
 	@FXML
 	private Button sub;
 
+	/**
+	 * A button with "3".    
+	 */
 	@FXML
 	private Button three;
-
+	
+	/**
+	 * A button with ".".    
+	 */
 	@FXML
 	private Button comma;
 
+	/**
+	 * A button with "2".    
+	 */
 	@FXML
 	private Button two;
 
+	/**
+	 * A button with "x".   
+	 */
 	@FXML
 	private Button mul;
 
+	/**
+	 * A button with "6".    
+	 */
 	@FXML
 	private Button six;
-
+	
+	/**
+	 * A button with "5".    
+	 */
 	@FXML
 	private Button five;
 
+	/**
+	 * A button with "/".    
+	 */
 	@FXML
 	private Button div;
 
+	/**
+	 * A button with "9".    
+	 */
 	@FXML
 	private Button nine;
 
+	/**
+	 * A button with "0".    
+	 */
 	@FXML
 	private Button zero;
 
+	/**
+	 * A button with "1".    
+	 */
 	@FXML
 	private Button one;
 
+	/**
+	 * A button with "4".    
+	 */
 	@FXML
 	private Button four;
 
+	/**
+	 * A button with "8".    
+	 */
 	@FXML
 	private Button eight;
 
+	/**
+	 * A button with the root sign.    
+	 */
 	@FXML
 	private Button root;
 
+	/**
+	 * A button with "1/x".    
+	 */
 	@FXML
 	private Button rec;
 
+	/**
+	 * A button with "+/-".    
+	 */
 	@FXML
 	private Button sign;
 
+	/**
+	 * A button with "C"/"AC".    
+	 */
 	@FXML
 	private Button ac;
 
+	/**
+	 * A text field showing the current number.     
+	 */
 	@FXML
 	private TextField display;
 
+	/**
+	 * A text field showing the current operations.     
+	 */
 	@FXML
 	private TextField operations;
 
+	/**
+	 * String object which contains the latest 2-argument-operation sign.       
+	 */
 	private String operator = "";
+
+	/**
+	 * String object which contains current mathematics expression. 
+	 */
 	private String expression = "";
-	Model model = new Model();
+
+	/**
+	 * Model object which does the calculations.      
+	 */
+	private Model model = new Model();
+
+	/**
+	 * Alert object which enables to show alerts.      
+	 */
 	private Alert alert = new Alert(AlertType.ERROR);
+
+	/**
+	 *  Boolean variable which shows if division was the last operation.
+	 */
 	private boolean division = false;
 
+
+	/**
+	 *  Called to initialize a controller after its root element has been completely processed.
+	 */
 	@FXML
-	void initialize() {
+	private void initialize() {
 		display.setText("0");
 		zero.setOnAction(e -> writeDigit("0"));
 		one.setOnAction(e -> writeDigit("1"));
@@ -124,6 +220,11 @@ public class Controller {
 		alert.setHeaderText("The argument is invalid");
 	}
 
+	/**
+	 *  Sets the display text after pressing a digit button.
+	 *  
+	 *  @param sign The digit which was pressed.
+	 */
 	@FXML
 	private void writeDigit(String sign) {
 		if (display.getText().equals("0")) {
@@ -135,6 +236,11 @@ public class Controller {
 			ac.setText("C");
 	}
 
+	/**
+	 *  Updates the expression after pressing an operation button.
+	 *  
+	 *  @param op The sign of an operator which was pressed.
+	 */
 	@FXML
 	private void processTwoArgOperator(String op) {
 		if (division && Double.parseDouble(display.getText()) == 0) {
@@ -150,6 +256,11 @@ public class Controller {
 
 	}
 
+	/**
+	 *  Sets the display text after calculation.
+	 *  
+	 *  @param event Action event which caused calling this method.
+	 */
 	@FXML
 	private void processOneArgOperator(ActionEvent event) {
 		String number = display.getText();
@@ -167,6 +278,8 @@ public class Controller {
 				display.setText(model.calculate("1/" + number + "d"));
 			break;
 		case "sign":
+			if (Double.parseDouble(number) == 0) 
+				return;
 			display.setText(model.calculate("(-1)*" + number + "d"));
 			break;
 		}
@@ -179,6 +292,11 @@ public class Controller {
 
 	}
 
+	/**
+	 *  Shows the result of a math expression. 
+	 *  
+	 *  @param event Action event which caused calling this method.
+	 */
 	@FXML
 	private void processEquality(ActionEvent event) {
 		if (operator.equals(""))
@@ -202,6 +320,11 @@ public class Controller {
 			comma.setDisable(false);
 	}
 
+	/**
+	 *  Shows the alert window.
+	 *  
+	 *  @param reason Text set as a content in an alert window.
+	 */
 	private void showErrorAlert(String reason) {
 		display.setText("ERROR");
 		alert.setContentText(reason);

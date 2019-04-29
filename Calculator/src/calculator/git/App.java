@@ -6,6 +6,12 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
+/**
+ * Creates the scene and sets the stage.
+ * 
+ * @author Magdalena Zych
+ *
+ */
 public class App extends Application {
 	
 	public static void main(String[] args) {
